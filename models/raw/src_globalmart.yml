@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: globalmart
+    database: raw # odkaz na db ve snowflake
+    schema: globalmart
+    tables:
+      - name: customer
+      - name: orders
+      - name: product
