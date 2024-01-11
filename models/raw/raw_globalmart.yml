@@ -1,0 +1,11 @@
+# testovací file, jestli jsou unikátní customer id
+version: 2
+
+models:
+  - name: raw_customer # odkaz na model
+    columns: 
+      - name: customerid # jaký sloupec testovat
+        tests: 
+          - unique # jaké testy provést
+          - not_null
+              
