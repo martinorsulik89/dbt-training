@@ -1,0 +1,28 @@
+# testovací file, jestli jsou unikátní customer id
+version: 2
+
+models:
+  - name: raw_customer # odkaz na model
+    columns: 
+      - name: customerid # jaký sloupec testovat
+        tests: 
+          - unique # jaké testy provést
+          - not_null
+
+# test na orderid, že jsou tam unikátní hodnoty a nenulové hodnoty
+# druhý test na shipmode z tabulky orders, může obsahovat pouze hodnoty first class atd... pokud je tam něco jiného je to error
+  - name: raw_orders
+    columns:
+      - name: orderid
+        tests:
+          - unique
+          - not_null
+      - name: shipmode
+        tests: 
+          - accepted_values:
+              values:
+                - "First Class"
+                - "Same Day"
+                - "Second Class"
+                - "Standard Class"
+              
